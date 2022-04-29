@@ -86,14 +86,20 @@
     "@storybook/manager-webpack5": "^6.4.22",
     "@storybook/node-logger": "^6.4.22",
     "@storybook/preset-create-react-app": "^4.1.0",
+    "@storybook/preset-scss": "^1.0.3",
     "@storybook/react": "^6.4.22",
     "@storybook/testing-library": "^0.0.11",
     "concurrently": "^7.1.0",
     "cross-env": "^7.0.3",
+    "css-loader": "6.5.1",
     "electron": "^18.0.4",
     "electron-builder": "^23.0.3",
     "electronmon": "^2.0.2",
+    "postcss": "^8",
+    "sass": "^1.43.4",
+    "sass-loader": "^12.3.0",
+    "style-loader": "2.0.0",
     "wait-on": "^6.0.1",
-    "webpack": "^5.72.0"
+    "webpack": "^5.31.2"
   }
 }
