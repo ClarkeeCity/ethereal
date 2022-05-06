@@ -21,3 +21,7 @@ electron:package does the following:\
 yarn build && electron-builder -{OS} -c.extraMetadata.main=build/electron.js\
 
 Where, {OS} is either -l, -w, or -m for each operating system.\
+
+### 'yarn storybook'
+
+Open up storybook in the browser to view component styling.

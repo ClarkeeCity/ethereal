@@ -1,87 +1,34 @@
 // Module to control the application lifecycle.
-// NOTE: Keep "requires", electron doesn't like import modules.
+// NOTE: Keep "requires", electron doesn't like import ES modules.
 const { app, BrowserWindow, protocol, Menu, dialog } = require("electron");
 const path = require("path");
 const url = require("url");
 
-// Create menu template with an array of objects.
-const toolbarTemplate = [
-  {
-    // Ethereal
-    label: "Ethereal",
-    submenu: [
-      {
-        // File
-        label: "File",
-        submenu: [
-          {
-            // Select Playlist Folder
-            label: "Select Playlist Folder",
-            click() {
-              //loadPlaylist();
-            },
-          },
-          {
-            // Exit
-            label: "Exit",
-            accelerator: "Ctrl+Q",
-            click() {
-              app.quit();
-            },
-          },
-        ],
-      },
-      {
-        // Help
-        label: "Help",
-        submenu: [
-          {
-            // About
-            label: "About",
-            click() {
-              //openAboutWindow();
-            },
-          },
-        ],
-      },
-    ],
-  },
-  {
-    // Debugging and Struggling
-    label: "Developer Tools",
-    submenu: [
-      {
-        label: "Chrome Tools",
-        accelerator: "Ctrl+I",
-        click(item, focusedWindow) {
-          focusedWindow.toggleDevTools(true);
-        },
-      },
-    ],
-  },
-];
+// Developer tools, provided by electron-devtools-installer.
+const { default: installExtension, REDUX_DEVTOOLS, REACT_DEVELOPER_TOOLS } = require('electron-devtools-installer');
 
-// Create the native browser window.
 const createEtherealWindow = () => {
   const mainWindow = new BrowserWindow({
     title: "Ethereal",
     icon: "public/images/logo192.png",
+    //frame: false,
     minWidth: 800,
     minHeight: 600,
-
     webPreferences: {
+      // TODO: Should we load the user's playlist if one exists here on load?
       preload: path.join(__dirname, "preload.js"),
     },
   });
 
   // In development, set it to localhost to allow live/hot-reloading.
-  const appURL = app.isPackaged
-    ? url.format({
+  const appURL = app.isPackaged ? 
+    url.format({
         pathname: path.join(__dirname, "index.html"),
         protocol: "file:",
         slashes: true,
       })
     : "http://localhost:3000";
+
   mainWindow.loadURL(appURL);
 
   // Open DevTools onload in development mode.
@@ -106,16 +53,74 @@ const setupLocalFilesNormalizerProxy = () => {
   );
 };
 
-const buildToolBar = (template) => {
-  const toolbar = Menu.buildFromTemplate(template);
+const buildToolBar = () => { 
+  const toolbarTemplate = [
+  {
+    label: "Ethereal",
+    submenu: [
+      {
+        label: "File",
+        submenu: [
+          {
+            label: "Select Playlist Folder",
+            click() {
+              //loadPlaylist();
+            },
+          },
+          {
+            label: "Exit",
+            accelerator: "Ctrl+Q",
+            click() {
+              app.quit();
+            },
+          },
+        ],
+      },
+      {
+        label: "Help",
+        submenu: [
+          {
+            label: "About",
+            click() {
+              //openAboutWindow();
+            },
+          },
+        ],
+      },
+    ],
+  },
+  {
+    label: "Developer Tools",
+    submenu: [
+      {
+        label: "Chrome Tools",
+        accelerator: "Ctrl+I",
+        click(item, focusedWindow) {
+          focusedWindow.toggleDevTools(true);
+        },
+      },
+    ],
+  },
+  ];
+
+  const toolbar = Menu.buildFromTemplate(toolbarTemplate);
   Menu.setApplicationMenu(toolbar);
 };
 
 // This method will be called when Electron has finished its initialization.
 app.whenReady().then(() => {
+
+  installExtension(REACT_DEVELOPER_TOOLS)
+    .then((name) => console.log(`Added Extension: ${name}`))
+    .catch((err) => console.error(`An error has occured: ${err}`));
+    
+  installExtension(REDUX_DEVTOOLS)
+    .then((name) => console.log(`Added Extension: ${name}`))
+    .catch((err) => console.error(`An error has occured: ${err}`));
+
   createEtherealWindow();
   setupLocalFilesNormalizerProxy();
-  buildToolBar(toolbarTemplate);
+  buildToolBar();
 
   app.on("activate", () => {
     // On macOS it's common to re-create a window in the app when the
@@ -126,7 +131,6 @@ app.whenReady().then(() => {
   });
 });
 
-// Quit when all windows are closed.
 app.on("window-all-closed", () => {
   if (process.platform !== "darwin") {
     app.quit();

@@ -1,3 +1,5 @@
-p {
-    background-color: red;
+@import "../master.scss";
+
+.albumSelection {
+    background-color: $base;
 }

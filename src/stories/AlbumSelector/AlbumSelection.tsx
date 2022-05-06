@@ -4,6 +4,6 @@ import './albumselection.scss';
 export const AlbumSelection = () => {
     
   return (
-    <div><p>HELLO!!</p></div>
+    <div className='albumSelection'><p>HELLO!!</p></div>
   );
 };

@@ -1,0 +1,17 @@
+@import "../master.scss";
+
+#titlebar {
+    font-size: large;
+}
+
+.titlebar--windows {
+    background-color: $base;
+}
+
+.titlebar--mac {
+    background-color: aqua;
+}
+
+.titlebar--linux {
+    background-color: red;
+}
