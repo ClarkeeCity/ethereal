@@ -1,0 +1,13 @@
+@import "../main.scss";
+
+.mediabar {
+  color: $text-main;
+  background-color: $main;
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+}
+
+.mediabar > * {
+  padding: 0 5px;
+}

@@ -1,11 +1,11 @@
-@import "../master.scss";
+@import "../main.scss";
 
 #titlebar {
     font-size: large;
 }
 
 .titlebar--windows {
-    background-color: $base;
+    background-color: $main;
 }
 
 .titlebar--mac {
