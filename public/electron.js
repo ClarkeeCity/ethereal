@@ -2,10 +2,14 @@
 // NOTE: Keep "requires", electron doesn't like import ES modules.
 const { app, BrowserWindow, protocol, Menu, dialog } = require("electron");
 const path = require("path");
+const fs = require('fs');
 const url = require("url");
+const load = require("./fileManagement/createPlaylist.ts");
 
 // Developer tools, provided by electron-devtools-installer.
 const { default: installExtension, REDUX_DEVTOOLS, REACT_DEVELOPER_TOOLS } = require('electron-devtools-installer');
+
+let library;
 
 const createEtherealWindow = () => {
   const mainWindow = new BrowserWindow({
@@ -63,8 +67,16 @@ const buildToolBar = () => {
         submenu: [
           {
             label: "Select Playlist Folder",
-            click() {
-              //loadPlaylist();
+            click() { 
+              library = load.fetchFiles();
+              library.then((results) => {
+                //console.log(results);
+                // save the results
+                load.saveFileList(results);
+                // display files to play from
+              });
+
+              // display the playlist.
             },
           },
           {

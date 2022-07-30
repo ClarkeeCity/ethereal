@@ -21,7 +21,8 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
+  "semicolon": [true],
   "include": [
-    "src"
-  ]
+    "src",
+  ],
 }
