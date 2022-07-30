@@ -45,6 +45,9 @@ const saveFileList = (filesToSave) => {
   })
 }
 
+// Somehow tell 
+const renderList = () => {
+  
+}
 
 module.exports = {fetchFiles, saveFileList}
-

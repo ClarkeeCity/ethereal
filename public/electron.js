@@ -1,6 +1,5 @@
 // Module to control the application lifecycle.
-// NOTE: Keep "requires", electron doesn't like import ES modules.
-const { app, BrowserWindow, protocol, Menu, dialog } = require("electron");
+const { app, BrowserWindow, protocol, Menu, ipcMain ,dialog } = require("electron");
 const path = require("path");
 const fs = require('fs');
 const url = require("url");
@@ -74,6 +73,7 @@ const buildToolBar = () => {
                 // save the results
                 load.saveFileList(results);
                 // display files to play from
+                //load.renderList();
               });
 
               // display the playlist.
