@@ -1,13 +1,11 @@
 import { IoMdSkipForward } from 'react-icons/io';
 import PlayBackButton from '../PlaybackButton';
 
-export default function Pause() {
+export default function SkipForward() {
   return (
     <PlayBackButton
+      onClick={() => console.log('forward')}
       label={<IoMdSkipForward />}
-      onClick={() => {
-        console.log('Skip Forward');
-      }}
     />
   );
 }

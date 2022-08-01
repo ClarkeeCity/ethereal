@@ -2,10 +2,13 @@ import './playbackbutton.scss';
 
 interface PlaybackProps {
   label: JSX.Element;
-  // eslint-disable-next-line react/no-unused-prop-types
   onClick: () => void;
 }
 
-export default function PlayBackButton({ label }: PlaybackProps) {
-  return <div className="playbackButton">{label}</div>;
+export default function PlayBackButton({ label, onClick }: PlaybackProps) {
+  return (
+    <button type="button" onClick={onClick} className="playbackButton">
+      {label}
+    </button>
+  );
 }

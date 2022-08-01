@@ -4,4 +4,8 @@
   color: $text-main;
   font-size: 30px;
   display: inline-flex;
+  /* Removes browser styling */
+  background: none;
+	border: none;
+	outline: inherit;
 }

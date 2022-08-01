@@ -1,13 +1,8 @@
 import { IoMdPlay } from 'react-icons/io';
 import PlayBackButton from '../PlaybackButton';
 
-export default function Pause() {
+export default function Play() {
   return (
-    <PlayBackButton
-      label={<IoMdPlay />}
-      onClick={() => {
-        console.log('Play');
-      }}
-    />
+    <PlayBackButton onClick={() => console.log('play')} label={<IoMdPlay />} />
   );
 }

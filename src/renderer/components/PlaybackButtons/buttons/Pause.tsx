@@ -4,10 +4,8 @@ import PlayBackButton from '../PlaybackButton';
 export default function Pause() {
   return (
     <PlayBackButton
+      onClick={() => console.log('pause')}
       label={<IoMdPause />}
-      onClick={() => {
-        console.log('Pause');
-      }}
     />
   );
 }

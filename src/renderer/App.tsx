@@ -5,10 +5,11 @@ import MediaBar from './components/MediaBar/MediaBar';
 
 export default function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<MediaBar />} />
-      </Routes>
-    </Router>
+    <div>
+      <MediaBar />
+      <button type="button" onClick={() => window.electron.doAThing()}>
+        CLICK ME
+      </button>
+    </div>
   );
 }
