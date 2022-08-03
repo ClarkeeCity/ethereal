@@ -1,12 +1,13 @@
 import { contextBridge, ipcRenderer, IpcRendererEvent } from 'electron';
+import { MetaDataInterface } from 'interface';
 
 export type Channels = 'ipc-example';
 
 // contextBridge avoids leaking privleged APIs into web content,
 // this is primary bridge between the renderer to main
 contextBridge.exposeInMainWorld('electron', {
-  doAThing: () => {
-    console.log('hello IPC!!');
+  renderPlaylist: (playlist: MetaDataInterface[]) => {
+    return playlist;
   },
   ipcRenderer: {
     sendMessage(channel: Channels, args: unknown[]) {

@@ -1,0 +1,42 @@
+{
+  "format": {
+    "tagTypes": ["ID3v2.3", "ID3v1"],
+    "trackInfo": [],
+    "lossless": false,
+    "container": "MPEG",
+    "codec": "MPEG 1 Layer 3",
+    "sampleRate": 48000,
+    "numberOfChannels": 2,
+    "bitrate": 129225.88803310724,
+    "duration": 208.776,
+    "codecProfile": "V10"
+  },
+  "native": {
+    "ID3v2.3": [
+      { "id": "TSSE", "value": "Lavf58.29.100" },
+      { "id": "TRCK", "value": "1" },
+      { "id": "TIT2", "value": "Gluee (Intro)" },
+      { "id": "TPE1", "value": "bladee" },
+      { "id": "TALB", "value": "Gluee" }
+    ],
+    "ID3v1": [
+      { "id": "title", "value": "Gluee (Intro)" },
+      { "id": "artist", "value": "bladee" },
+      { "id": "album", "value": "Gluee" },
+      { "id": "track", "value": 1 },
+      { "id": "year", "value": "2017" }
+    ]
+  },
+  "quality": { "warnings": [] },
+  "common": {
+    "track": { "no": 1, "of": null },
+    "disk": { "no": null, "of": null },
+    "movementIndex": {},
+    "encodersettings": "Lavf58.29.100",
+    "title": "Gluee (Intro)",
+    "artists": ["bladee"],
+    "artist": "bladee",
+    "album": "Gluee",
+    "year": 2017
+  }
+}

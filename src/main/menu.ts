@@ -5,8 +5,10 @@ import {
   BrowserWindow,
   MenuItemConstructorOptions,
 } from 'electron';
+import fs from 'fs';
 
-import selectDirectory from './selectDirectory';
+import selectDirectory from './playlist/selectDirectory';
+import saveMetadata from './playlist/saveMetadata';
 
 interface DarwinMenuItemConstructorOptions extends MenuItemConstructorOptions {
   selector?: string;
@@ -204,8 +206,30 @@ export default class MenuBuilder {
             submenu: [
               {
                 label: 'Select Playlist Folder',
-                click() {
-                  selectDirectory();
+                async click() {
+                  const fetch = selectDirectory().then(
+                    (filesArray) => filesArray
+                  );
+                  // When the promise is resolved, assign files;
+                  const files = await fetch;
+                  fs.writeFile('test.txt', '', (err: unknown) => {
+                    if (err) console.error('ERROR: ', err);
+                  });
+
+                  // Write a new file to put the playlist in.
+                  // TODO: Absolute temp for now, as we don't want to overwrite
+                  // an already generated playlist with custom data.
+                  fs.appendFile('test.txt', `[\n`, (err: unknown) => {
+                    if (err) console.error(err);
+                  });
+                  // eslint-disable-next-line promise/catch-or-return, promise/always-return
+                  saveMetadata(files).then(() => {
+                    // close the file off with bracket to close JSON array.
+                    fs.appendFile('test.txt', `]\n`, (err: unknown) => {
+                      if (err) console.error(err);
+                    });
+                    console.log('tell the renderer to display the data');
+                  });
                 },
               },
             ],

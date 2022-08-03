@@ -7,13 +7,6 @@ const acceptedLookup = new Set(acceptedFileTypes);
 
 const files = [] as string[];
 
-// fetch indidiual information about the files we are importing.
-// song name
-// artist
-// album
-// year
-// length
-
 // Recursive function to get all files from a selected directory.
 const indexFiles = (dirPath: string) => {
   const item = fs.readdirSync(dirPath);
@@ -21,17 +14,10 @@ const indexFiles = (dirPath: string) => {
     if (fs.statSync(`${dirPath}/${filePath}`).isDirectory())
       // eslint-disable-next-line no-param-reassign
       indexFiles(`${dirPath}/${filePath}`);
+    // if the item is a file, check file ext, if valid, then add to files list
     else if (acceptedLookup.has(path.extname(filePath))) {
       files.push(path.join(`${dirPath}/${filePath}`));
     }
-  });
-};
-
-// After an array of files are fetched, save them in a local JSON
-const saveFileList = (filesToSave: string[]) => {
-  const filesJSON = JSON.stringify(filesToSave);
-  fs.writeFile('test.txt', filesJSON, (err: Promise<unknown>) => {
-    if (err) console.log(err);
   });
 };
 
@@ -48,5 +34,5 @@ export default async function selectDirectory() {
     console.error('no directory selected');
   }
 
-  saveFileList(files);
+  return files;
 }

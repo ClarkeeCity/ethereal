@@ -1,0 +1,19 @@
+@import "../main.scss";
+
+.header, .list {
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
+  color: $text-main;
+}
+
+.list {
+  background-color: $surface;
+  thead {
+    background-color: $main;
+  }
+
+  tr:nth-child(even) {
+    background-color: $surface-dark;
+  }
+}
