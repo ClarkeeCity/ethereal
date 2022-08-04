@@ -26,9 +26,8 @@ class AppUpdater {
 let mainWindow: BrowserWindow | null = null;
 
 ipcMain.on('ipc-example', async (event, arg) => {
-  const msgTemplate = (pingPong: string) => `IPC test: ${pingPong}`;
-  console.log(msgTemplate(arg));
-  event.reply('ipc-example', msgTemplate('pong'));
+  console.log(`IPC test: ${arg}`);
+  event.reply('ipc-example', `IPC test: pong`);
 });
 
 if (process.env.NODE_ENV === 'production') {
@@ -128,6 +127,10 @@ app.on('window-all-closed', () => {
 app
   .whenReady()
   .then(() => {
+    // Turn on the "broadcast" for playlist-status.
+    ipcMain.on('playlist-status', (_event, value) => {
+      console.log(value);
+    });
     createWindow();
     app.on('activate', () => {
       // On macOS it's common to re-create a window in the app when the

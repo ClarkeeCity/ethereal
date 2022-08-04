@@ -3,11 +3,13 @@ import './playlist.scss';
 import { MetaDataInterface } from 'interface';
 import Row from './Row';
 
-export default function Playlist() {
-  const [playlist, setPlaylist] = useState<MetaDataInterface[]>([]);
+interface PlaylistInterface {
+  playlistData: MetaDataInterface[];
+}
 
-  const songs = playlist
-    ? playlist.map((song, i) => (
+export default function Playlist({ playlistData }: PlaylistInterface) {
+  const songs = playlistData
+    ? playlistData.map((song) => (
         <Row
           key={song.filePath}
           filePath={song.filePath}

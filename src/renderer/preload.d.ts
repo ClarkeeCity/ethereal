@@ -3,7 +3,9 @@ import { Channels } from 'main/preload';
 declare global {
   interface Window {
     electron: {
-      doAThing(): void;
+      updatePlaylist(
+        callback: (event: Electron.IpcRendererEvent, ...args: any[]) => void
+      ): Electron.IpcRenderer;
       ipcRenderer: {
         sendMessage(channel: Channels, args: unknown[]): void;
         on(

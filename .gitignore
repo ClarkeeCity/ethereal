@@ -6,6 +6,9 @@ logs
 pids
 *.pid
 *.seed
+## Userdata
+test.txt
+playlist-data.json
 
 # Coverage directory used by tools like istanbul
 coverage

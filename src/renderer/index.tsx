@@ -1,3 +1,4 @@
+import { ipcRenderer } from 'electron';
 import { createRoot } from 'react-dom/client';
 import App from './App';
 
@@ -8,6 +9,6 @@ root.render(<App />);
 // calling IPC exposed from preload script
 window.electron.ipcRenderer.once('ipc-example', (arg) => {
   // eslint-disable-next-line no-console
-  console.log(arg);
+  console.log('index.tsx', arg);
 });
 window.electron.ipcRenderer.sendMessage('ipc-example', ['ping']);
