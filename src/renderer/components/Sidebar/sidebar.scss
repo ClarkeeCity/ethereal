@@ -1,0 +1,8 @@
+@import "../main.scss";
+
+.sidebar {
+  background-color: $main;
+  width: 198px;
+  position: sticky;
+  flex-shrink: 0;
+}

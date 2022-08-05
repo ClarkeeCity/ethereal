@@ -20,8 +20,7 @@ export default async function createDirectory(window: BrowserWindow) {
       playlistDataFilePath,
       JSON.stringify(resolve),
       (err: unknown) => {
-        if (err) console.error(err);
-        console.log('ready to send to renderer');
+        if (err) throw err;
       }
     );
     // Now that this data is saved, send it over to renderer to dispaly.

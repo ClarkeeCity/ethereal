@@ -1,4 +1,5 @@
 import fs from 'fs';
+import path from 'path';
 import { MetaDataInterface } from '../../interface';
 
 const mm = require('music-metadata');
@@ -31,7 +32,9 @@ export default async function saveMetadata(
       const capture = {} as MetaDataInterface;
       capture.filePath = audioFile;
       capture.artist = metadata.common.artist;
-      capture.title = metadata.common.title;
+      capture.title = metadata.common.title
+        ? metadata.common.title
+        : path.basename(capture.filePath);
       capture.album = metadata.common.album;
       capture.duration = metadata.format.duration;
       capture.year = metadata.common.year;

@@ -17,25 +17,15 @@ export default function Playlist({
       ))
     : [];
   return (
-    <div>
+    <div id="playlist">
       <table className="list">
         <thead>
           <tr>
-            <td>
-              <span>Title</span>
-            </td>
-            <td>
-              <span>Artist</span>
-            </td>
-            <td>
-              <span>Album</span>
-            </td>
-            <td>
-              <span>Year</span>
-            </td>
-            <td>
-              <span>Time</span>
-            </td>
+            <td>Title</td>
+            <td>Artist</td>
+            <td>Album</td>
+            <td>Year</td>
+            <td>Time</td>
           </tr>
         </thead>
         <tbody>{songs}</tbody>
