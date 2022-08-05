@@ -34,9 +34,8 @@ ipcMain.on('ipc-example', async (event, arg) => {
 // Two way broadcast for play. Renderer will request a file, main will send
 // file data, then in the renderer, we can play the song we want.
 ipcMain.handle('create:song-buffer', (event, arg) => {
-  return createBuffer(arg).then(() => {
-    console.log(new Date().getMilliseconds);
-    return 'done with ipcMain';
+  return createBuffer(arg).then((resolve) => {
+    return resolve.toString('base64');
   });
 });
 

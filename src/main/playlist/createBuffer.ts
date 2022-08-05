@@ -10,9 +10,10 @@ export default async function createBuffer(filePath: string) {
   //   return Promise.resolve(base64file);
   // });
   // fs.promises is a quick was of 'awaiting' asynch for fs to be done.
-  const buffer = fs.promises.readFile(filePath);
-  // eslint-disable-next-line promise/catch-or-return, promise/always-return
-  buffer.then((resolve) => {
-    fs.promises.writeFile('stream.txt', resolve.toString('base64'));
-  });
+  return fs.promises.readFile(filePath);
+  // const buffer = fs.promises.readFile(filePath);
+  // // eslint-disable-next-line promise/catch-or-return, promise/always-return
+  // buffer.then((resolve) => {
+  //   fs.promises.writeFile('stream.txt', resolve.toString('base64'));
+  // });
 }

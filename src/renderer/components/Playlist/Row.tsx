@@ -21,16 +21,12 @@ export default function Row({
           console.log('before buffer fetch');
           // eslint-disable-next-line promise/catch-or-return, promise/always-return
           window.electron.getBuffer(filePath).then((resolve) => {
+            // const source = 'source';
             const sound = new Howl({
-              src: 'stream',
-              html5: true,
-              format: '.mp3',
+              src: [`data:audio/x-mp3;base64,${resolve}`],
             });
 
-            sound.once('load', () => {
-              console.log('playing!!');
-              sound.play();
-            });
+            sound.once('load', () => sound.play());
           });
         }}
         data-filepath={filePath}
