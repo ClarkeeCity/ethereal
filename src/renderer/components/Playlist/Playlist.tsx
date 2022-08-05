@@ -5,20 +5,16 @@ import Row from './Row';
 
 interface PlaylistInterface {
   playlistData: MetaDataInterface[];
+  setStream: React.Dispatch<string[]>;
 }
 
-export default function Playlist({ playlistData }: PlaylistInterface) {
+export default function Playlist({
+  playlistData,
+  setStream,
+}: PlaylistInterface) {
   const songs = playlistData
     ? playlistData.map((song) => (
-        <Row
-          key={song.filePath}
-          filePath={song.filePath}
-          title={song.title}
-          artist={song.artist}
-          album={song.album}
-          year={song.year}
-          length={song.length}
-        />
+        <Row key={song.filePath} fileData={song} setStream={setStream} />
       ))
     : [];
   return (
@@ -43,7 +39,7 @@ export default function Playlist({ playlistData }: PlaylistInterface) {
             </td>
           </tr>
         </thead>
-        <tbody>{songs.length > 0 ? songs : <Row filePath="NULL" />}</tbody>
+        <tbody>{songs}</tbody>
       </table>
     </div>
   );

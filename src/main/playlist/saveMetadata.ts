@@ -12,7 +12,7 @@ function durationToTime(duration: number): string {
   const s = r >= 0 ? Math.round(r * 60) : Math.round(r * 60) * -1;
   // setting up time format
   const minutes = Math.round(m);
-  const seconds = s > 10 ? s : `0${s}`;
+  const seconds = s >= 10 ? s : `0${s}`;
   return `${minutes}:${seconds}`;
 }
 
