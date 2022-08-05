@@ -13,7 +13,21 @@
     background-color: $main;
   }
 
+  td {
+    padding: 3px 0;
+  }
+
   tr:nth-child(even) {
     background-color: $surface-dark;
+  }
+
+  $darken-percentage: 5%;
+
+  tr:nth-child(even):hover {
+    background-color: darken($surface-dark, $darken-percentage);
+  }
+
+  tr:hover {
+    background-color: darken($surface, $darken-percentage);
   }
 }

@@ -1,4 +1,8 @@
+import { Howl, Howler } from 'howler';
 import { MetaDataInterface } from '../../../interface';
+
+// Unadvisable to have a click and dclick on same element. Create our special
+// double click function ourselves using setTimeout.
 
 export default function Row({
   filePath,
@@ -10,7 +14,27 @@ export default function Row({
 }: MetaDataInterface) {
   return (
     <>
-      <tr data-filepath={filePath}>
+      <tr
+        onClick={() => {
+          // send a message from renderer to main to say, hey we need a data to
+          // play the music.
+          console.log('before buffer fetch');
+          // eslint-disable-next-line promise/catch-or-return, promise/always-return
+          window.electron.getBuffer(filePath).then((resolve) => {
+            const sound = new Howl({
+              src: 'stream',
+              html5: true,
+              format: '.mp3',
+            });
+
+            sound.once('load', () => {
+              console.log('playing!!');
+              sound.play();
+            });
+          });
+        }}
+        data-filepath={filePath}
+      >
         <td>{title}</td>
         <td>{artist}</td>
         <td>{album}</td>

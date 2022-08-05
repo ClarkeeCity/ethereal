@@ -13,7 +13,7 @@ export default function App() {
 
   window.electron.updatePlaylist(
     (_event: IpcRendererEvent, value: SetStateAction<MetaDataInterface[]>) => {
-      console.log(value);
+      console.log('window.electron.updatePlayList(): ', value);
       setData(value);
     }
   );

@@ -1,8 +1,7 @@
+import fs from 'fs';
 import { MetaDataInterface } from '../../interface';
 
-const fs = require('fs');
 const mm = require('music-metadata');
-const util = require('util');
 // NodeID3 has the capability of setting ID3 tags for MP3s.
 const NodeID3 = require('node-id3');
 
@@ -42,5 +41,6 @@ export default async function saveMetadata(
       return saveMetadata(files);
     });
   }
+  // Promise fulfilled.
   return ret;
 }

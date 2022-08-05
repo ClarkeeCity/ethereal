@@ -14,6 +14,7 @@ import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import MenuBuilder from './menu';
 import { resolveHtmlPath } from './util';
+import createBuffer from './playlist/createBuffer';
 
 class AppUpdater {
   constructor() {
@@ -28,6 +29,15 @@ let mainWindow: BrowserWindow | null = null;
 ipcMain.on('ipc-example', async (event, arg) => {
   console.log(`IPC test: ${arg}`);
   event.reply('ipc-example', `IPC test: pong`);
+});
+
+// Two way broadcast for play. Renderer will request a file, main will send
+// file data, then in the renderer, we can play the song we want.
+ipcMain.handle('create:song-buffer', (event, arg) => {
+  return createBuffer(arg).then(() => {
+    console.log(new Date().getMilliseconds);
+    return 'done with ipcMain';
+  });
 });
 
 if (process.env.NODE_ENV === 'production') {
@@ -72,8 +82,8 @@ const createWindow = async () => {
     title: 'Ethereal',
     icon: getAssetPath('icon.png'),
     show: false,
-    minWidth: 800,
-    minHeight: 600,
+    minWidth: 940,
+    minHeight: 800,
     webPreferences: {
       preload: app.isPackaged
         ? path.join(__dirname, 'preload.js')
@@ -129,7 +139,7 @@ app
   .then(() => {
     // Turn on the "broadcast" for playlist-status.
     ipcMain.on('playlist-status', (_event, value) => {
-      console.log(value);
+      console.log('IPCmain-playlist-status: ', value);
     });
     createWindow();
     app.on('activate', () => {
