@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import './playlist.scss';
 import { MetaDataInterface } from 'interface';
 import Row from './Row';

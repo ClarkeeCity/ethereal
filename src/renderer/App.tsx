@@ -1,4 +1,3 @@
-import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import { MetaDataInterface } from 'interface';
 import { SetStateAction, useState } from 'react';
@@ -22,6 +21,7 @@ export default function App() {
     src: stream,
     html5: true,
   });
+
   sound.play();
   return (
     <>

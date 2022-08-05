@@ -1,4 +1,3 @@
-import { Howl, Howler } from 'howler';
 import { MetaDataInterface } from '../../../interface';
 
 interface RowInterface {

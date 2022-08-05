@@ -26,17 +26,11 @@ class AppUpdater {
 
 let mainWindow: BrowserWindow | null = null;
 
-ipcMain.on('ipc-example', async (event, arg) => {
-  console.log(`IPC test: ${arg}`);
-  event.reply('ipc-example', `IPC test: pong`);
-});
-
 // Two way broadcast for play. Renderer will request a file, main will send
 // file data, then in the renderer, we can play the song we want.
-ipcMain.handle('create:song-buffer', (event, arg) => {
-  return createBuffer(arg).then((resolve) => {
-    return resolve.toString('base64');
-  });
+ipcMain.handle('create:song-buffer', async (_event, arg) => {
+  const resolve = await createBuffer(arg);
+  return resolve.toString('base64');
 });
 
 if (process.env.NODE_ENV === 'production') {
