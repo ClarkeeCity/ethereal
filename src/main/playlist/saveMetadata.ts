@@ -4,7 +4,7 @@ import { MetaDataInterface } from '../../interface';
 
 const mm = require('music-metadata');
 // NodeID3 has the capability of setting ID3 tags for MP3s.
-const NodeID3 = require('node-id3');
+// const NodeID3 = require('node-id3');
 
 function durationToTime(duration: number): string {
   const roundedDuration = Math.round((duration + Number.EPSILON) * 100) / 100;
@@ -26,6 +26,9 @@ export default async function saveMetadata(
   files: string[]
 ): Promise<MetaDataInterface[]> {
   const audioFile = files.shift();
+
+  // check if this file already exists in the playlist.
+
   if (audioFile) {
     return mm.parseFile(audioFile).then((metadata: any) => {
       // append this files metadata to a file.

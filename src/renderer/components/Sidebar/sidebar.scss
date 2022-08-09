@@ -4,5 +4,7 @@
   background-color: $main;
   width: 198px;
   position: sticky;
+  flex-grow: 0;
   flex-shrink: 0;
+  margin-bottom: $bottombar-size;
 }

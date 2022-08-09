@@ -1,4 +1,4 @@
-import './mediabar.scss';
+import './mediactrl.scss';
 import {
   Play,
   Pause,
@@ -6,7 +6,7 @@ import {
   SkipBackward,
 } from '../PlaybackButtons/index';
 
-export default function MediaBar() {
+export default function MediaCtrl() {
   return (
     <div className="mediabar">
       <SkipBackward />

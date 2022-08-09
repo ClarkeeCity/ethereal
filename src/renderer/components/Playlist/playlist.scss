@@ -9,8 +9,9 @@
 
 #playlist {
   width: 100%;
-  overflow-y: scroll;
   background-color: $surface;
+  margin-bottom: $bottombar-size;
+  overflow-y: scroll;
 }
 
 #playlist::-webkit-scrollbar {

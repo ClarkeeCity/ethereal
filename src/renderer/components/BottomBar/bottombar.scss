@@ -1,0 +1,11 @@
+@import "../main.scss";
+
+#bottombar {
+  display: flex;
+  align-items: center;
+  height: $bottombar-size;
+  width: 100%;
+  background-color: $main-dark;
+  bottom: 0;
+  position: fixed;
+}

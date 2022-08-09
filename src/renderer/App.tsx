@@ -1,12 +1,13 @@
-import './App.scss';
+import './components/main.scss';
 import { MetaDataInterface } from 'interface';
 import { SetStateAction, useState } from 'react';
 import { IpcRendererEvent } from 'electron';
 import { Howl } from 'howler';
-import MediaBar from './components/MediaBar/MediaBar';
 import Playlist from './components/Playlist/Playlist';
 import Experiences from './components/Experiences/Experiences';
 import Sidebar from './components/Sidebar/Sidebar';
+import BottomBar from './components/BottomBar/BottomBar';
+import TitleBar from './components/TitleBar/TitleBar';
 
 export default function App() {
   // After main is done processing the list of files, display the files to renderer.
@@ -27,17 +28,31 @@ export default function App() {
   sound.play();
 
   return (
-    <>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        width: '100vw',
+        height: '100vh',
+      }}
+    >
+      <TitleBar />
       <div id="app">
-        <div>
-          <Experiences />
-        </div>
-        <div style={{ display: 'flex', width: '100%' }}>
-          <Sidebar />
-          <Playlist setStream={setStream} playlistData={data} />
-          <Sidebar />
+        <Experiences />
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+          }}
+        >
+          <div style={{ display: 'flex', height: '100%' }}>
+            <Sidebar />
+            <Playlist playlistData={data} setStream={setStream} />
+            <Sidebar />
+          </div>
+          <BottomBar />
         </div>
       </div>
-    </>
+    </div>
   );
 }

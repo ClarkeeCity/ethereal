@@ -1,0 +1,9 @@
+@import "../main.scss";
+
+.titlebar {
+  height: 26px;
+  background-color: $main-dark;
+  width: 100%;
+  flex-grow: 0;
+  flex-shrink: 0;
+}

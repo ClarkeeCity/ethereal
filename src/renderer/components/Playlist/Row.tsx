@@ -17,9 +17,9 @@ export default function Row({ fileData, setStream }: RowInterface) {
         }}
         data-filepath={fileData.filePath}
       >
-        <td>{fileData.title}</td>
-        <td>{fileData.artist}</td>
-        <td>{fileData.album}</td>
+        <td title={fileData.title}>{fileData.title}</td>
+        <td title={fileData.artist}>{fileData.artist}</td>
+        <td title={fileData.album}>{fileData.album}</td>
         <td>{fileData.year}</td>
         <td>{fileData.length}</td>
       </tr>

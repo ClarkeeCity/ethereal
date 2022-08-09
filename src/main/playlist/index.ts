@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { BrowserWindow, ipcMain } from 'electron';
+import { BrowserWindow } from 'electron';
 import { MetaDataInterface } from 'interface';
 import saveMetadata from './saveMetadata';
 import selectDirectory from './selectDirectory';
