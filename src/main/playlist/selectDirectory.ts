@@ -12,7 +12,7 @@ const indexFiles = (dirPath: string) => {
   const item = fs.readdirSync(dirPath);
   item.forEach((filePath: string) => {
     if (fs.statSync(`${dirPath}/${filePath}`).isDirectory())
-      // Recursive, go into this directory and perform operation.
+      // eslint-disable-next-line no-param-reassign
       indexFiles(`${dirPath}/${filePath}`);
     // if the item is a file, check file ext, if valid, then add to files list
     else if (acceptedLookup.has(path.extname(filePath))) {
@@ -22,8 +22,8 @@ const indexFiles = (dirPath: string) => {
 };
 
 // Open up the dialog window, user will select directory.
-// When selected, recursive function indexFiles is used to fetch all files from
-// said selected directory.
+// When selected, recursive function is used to fetch all files from
+// said folder.
 export default async function selectDirectory() {
   const response = await dialog.showOpenDialog({
     properties: ['openDirectory'],
@@ -31,9 +31,8 @@ export default async function selectDirectory() {
   if (!response.canceled) {
     indexFiles(response.filePaths[0]);
   } else {
-    // TODO: Show popup that lets the user know that something went wrong.
     // eslint-disable-next-line no-console
-    console.error('No directory selected.');
+    console.error('No directory selected');
   }
 
   return files;

@@ -1,10 +1,4 @@
-import {
-  contextBridge,
-  ipcMain,
-  ipcRenderer,
-  IpcRendererEvent,
-} from 'electron';
-import { MetaDataInterface } from 'interface';
+import { contextBridge, ipcRenderer, IpcRendererEvent } from 'electron';
 
 export type Channels = 'ipc-example';
 export type PlaylistUpdateChannel = 'update-playlist';
@@ -15,6 +9,7 @@ contextBridge.exposeInMainWorld('electron', {
   getBuffer: (filePath: string) =>
     ipcRenderer.invoke('create:song-buffer', filePath),
   updatePlaylist: (
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     callback: (event: Electron.IpcRendererEvent, ...args: any[]) => void
   ) => ipcRenderer.on('update-playlist', callback),
   ipcRenderer: {

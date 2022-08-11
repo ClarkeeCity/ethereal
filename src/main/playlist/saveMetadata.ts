@@ -1,12 +1,11 @@
-import fs from 'fs';
 import path from 'path';
+import mm from 'music-metadata';
+import { IAudioMetadata } from 'music-metadata/lib/type';
 import { MetaDataInterface } from '../../interface';
 
-const mm = require('music-metadata');
-// NodeID3 has the capability of setting ID3 tags for MP3s.
-// const NodeID3 = require('node-id3');
-
-function durationToTime(duration: number): string {
+// Small function to convert seconds into a readable time foramt.
+function durationToTime(duration: number | undefined): string {
+  if (duration === undefined) return '0:00';
   const roundedDuration = Math.round((duration + Number.EPSILON) * 100) / 100;
   const m = roundedDuration / 60;
   const r = m - Math.round(m);
@@ -26,11 +25,8 @@ export default async function saveMetadata(
   files: string[]
 ): Promise<MetaDataInterface[]> {
   const audioFile = files.shift();
-
-  // check if this file already exists in the playlist.
-
   if (audioFile) {
-    return mm.parseFile(audioFile).then((metadata: any) => {
+    return mm.parseFile(audioFile).then((metadata: IAudioMetadata) => {
       // append this files metadata to a file.
       const capture = {} as MetaDataInterface;
       capture.filePath = audioFile;
