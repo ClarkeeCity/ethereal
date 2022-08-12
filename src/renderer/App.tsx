@@ -11,9 +11,9 @@ import TitleBar from './components/TitleBar/TitleBar';
 
 export default function App() {
   // After main is done processing the list of files, display the files to renderer.
-  const [data, setData] = useState<MetaDataInterface[]>([]);
+  const [data, setData] = useState<string[]>([]);
   window.electron.updatePlaylist(
-    (_event: IpcRendererEvent, value: SetStateAction<MetaDataInterface[]>) => {
+    (_event: IpcRendererEvent, value: SetStateAction<string[]>) => {
       setData(value);
     }
   );

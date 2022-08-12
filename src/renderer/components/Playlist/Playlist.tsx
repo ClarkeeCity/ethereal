@@ -3,7 +3,7 @@ import { MetaDataInterface } from 'interface';
 import Row from './Row';
 
 interface PlaylistInterface {
-  playlistData: MetaDataInterface[];
+  playlistData: string[];
   setStream: React.Dispatch<string[]>;
 }
 
@@ -13,7 +13,7 @@ export default function Playlist({
 }: PlaylistInterface) {
   const songs = playlistData
     ? playlistData.map((song) => (
-        <Row key={song.filePath} fileData={song} setStream={setStream} />
+        <Row key={song} fileData={song} setStream={setStream} />
       ))
     : [];
   return (
