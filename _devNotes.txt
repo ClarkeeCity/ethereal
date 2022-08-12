@@ -1,2 +1,0 @@
-I'm currently refactoring the code to do the hashing, that way we have quick
-look ups when dealing with the file information.
