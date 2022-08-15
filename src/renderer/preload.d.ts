@@ -1,6 +1,5 @@
 import { MetaDataInterface } from 'interface';
 import { Channels } from 'main/preload';
-import { IAudioMetadata } from 'music-metadata';
 
 declare global {
   interface Window {

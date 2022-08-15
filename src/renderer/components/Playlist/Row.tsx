@@ -8,6 +8,7 @@ interface RowInterface {
 
 export default function Row({ fileData, setStream }: RowInterface) {
   const [fileMetadata, setFileMetadata] = useState<MetaDataInterface>();
+  // Display metadata for this data row.
   useEffect(() => {
     const fetchData = async () => {
       const data = await window.electron.getMetadata(fileData);
@@ -15,6 +16,7 @@ export default function Row({ fileData, setStream }: RowInterface) {
     };
     fetchData();
   }, [fileData]);
+
   return (
     <>
       <tr

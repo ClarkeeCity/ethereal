@@ -1,5 +1,4 @@
 import './playlist.scss';
-import { useEffect } from 'react';
 import Row from './Row';
 
 interface PlaylistInterface {

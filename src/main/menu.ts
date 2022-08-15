@@ -6,7 +6,7 @@ import {
   MenuItemConstructorOptions,
 } from 'electron';
 
-import updateDirectory from './playlist/index';
+import addFiles from './playlist/index';
 
 interface DarwinMenuItemConstructorOptions extends MenuItemConstructorOptions {
   selector?: string;
@@ -205,7 +205,7 @@ export default class MenuBuilder {
               {
                 label: 'Add Folder to Library',
                 click: () => {
-                  updateDirectory(this.mainWindow);
+                  addFiles(this.mainWindow);
                 },
               },
             ],

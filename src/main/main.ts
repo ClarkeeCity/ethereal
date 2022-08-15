@@ -14,7 +14,7 @@ import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import MenuBuilder from './menu';
 import { resolveHtmlPath } from './util';
-import createBuffer from './playlist/createBuffer';
+import createBuffer from './player/createBuffer';
 import fetchMetadata from './playlist/fetchMetadata';
 import selectDirectory from './playlist/selectDirectory';
 
