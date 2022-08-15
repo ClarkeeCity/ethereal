@@ -15,6 +15,7 @@ import log from 'electron-log';
 import MenuBuilder from './menu';
 import { resolveHtmlPath } from './util';
 import createBuffer from './playlist/createBuffer';
+import fetchMetadata from './playlist/fetchMetadata';
 
 class AppUpdater {
   constructor() {
@@ -31,6 +32,11 @@ let mainWindow: BrowserWindow | null = null;
 ipcMain.handle('create:song-buffer', async (_event, arg) => {
   const resolve = await createBuffer(arg);
   return resolve.toString('base64');
+});
+
+ipcMain.handle('fetch:metadata', async (_event, arg) => {
+  const resolve = await fetchMetadata(arg);
+  return resolve;
 });
 
 if (process.env.NODE_ENV === 'production') {

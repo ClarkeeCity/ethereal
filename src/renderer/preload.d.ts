@@ -1,8 +1,11 @@
+import { MetaDataInterface } from 'interface';
 import { Channels } from 'main/preload';
+import { IAudioMetadata } from 'music-metadata';
 
 declare global {
   interface Window {
     electron: {
+      getMetadata(filePath: string): Promise<MetaDataInterface>;
       getBuffer(filePath: string): Promise<BufferConstructor>;
       updatePlaylist(
         callback: (event: Electron.IpcRendererEvent, ...args: any[]) => void

@@ -3,7 +3,9 @@ export interface MetaDataInterface {
   title?: string;
   artist?: string;
   album?: string;
+  genre?: string;
   year?: number;
   length?: string;
+  /* metadata values */
   duration?: number;
 }

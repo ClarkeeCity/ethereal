@@ -28,7 +28,7 @@ function indexFiles(dirPath: string, fileSet: Set<string>) {
 // directory paths.
 async function readFile(): Promise<string[]> {
   return new Promise((resolve) => {
-    fs.readFile('EtherealLibrary.ether', { encoding: 'utf-8' }, (err, data) => {
+    fs.readFile('Ethereal.library', { encoding: 'utf-8' }, (err, data) => {
       // return empty if file does not exist.
       if (err) return resolve([]);
       return resolve(data.toString().split(/\n/g));
@@ -36,12 +36,11 @@ async function readFile(): Promise<string[]> {
   });
 }
 
-// Retreive current EtherealLibrary.ether data.
+// Retreive current Ethereal.library data.
 async function getCurrentPlaylist(): Promise<string[]> {
   // eslint-disable-next-line no-async-promise-executor
   return new Promise(async (resolve) => {
-    const readFilePromise = readFile();
-    const fileData = await readFilePromise;
+    const fileData = await readFile();
     return resolve(fileData);
   });
 }
@@ -50,11 +49,9 @@ async function getCurrentPlaylist(): Promise<string[]> {
 // When selected, recursive function is used to fetch all files from
 // said folder.
 export default async function selectDirectory(): Promise<string[]> {
-  // A HashSet of file paths to relate to for finalizing which files to append,
-  // to the saved playlist file.
-  const currentPlaylistPromise = getCurrentPlaylist();
-  const currentPlaylist = await currentPlaylistPromise;
-
+  // Current file paths in the main library already saved which then can be
+  // used to relate to on which files are new.
+  const currentPlaylist = await getCurrentPlaylist();
   const response = await dialog.showOpenDialog({
     properties: ['openDirectory'],
   });

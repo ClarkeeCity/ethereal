@@ -24,8 +24,10 @@ export default function Playlist({
             <td>Title</td>
             <td>Artist</td>
             <td>Album</td>
+            <td>Genre</td>
             <td>Year</td>
             <td>Time</td>
+            <td>Plays</td>
           </tr>
         </thead>
         <tbody>{songs}</tbody>
