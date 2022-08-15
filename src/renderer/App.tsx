@@ -1,6 +1,6 @@
+import { useEffect, SetStateAction, useState } from 'react';
 import './components/main.scss';
 import { MetaDataInterface } from 'interface';
-import { SetStateAction, useState } from 'react';
 import { IpcRendererEvent } from 'electron';
 import { Howl } from 'howler';
 import Playlist from './components/Playlist/Playlist';
@@ -10,8 +10,15 @@ import BottomBar from './components/BottomBar/BottomBar';
 import TitleBar from './components/TitleBar/TitleBar';
 
 export default function App() {
-  // After main is done processing the list of files, display the files to renderer.
+  // Playlist data, contained at the 'top' of renderer.
   const [data, setData] = useState<string[]>([]);
+  useEffect(() => {
+    // eslint-disable-next-line promise/catch-or-return, promise/always-return
+    window.electron.initPlaylist().then((resolve) => {
+      setData(resolve);
+    });
+  }, []);
+
   window.electron.updatePlaylist(
     (_event: IpcRendererEvent, value: SetStateAction<string[]>) => {
       setData(value);

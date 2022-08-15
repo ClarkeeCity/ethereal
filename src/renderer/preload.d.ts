@@ -5,6 +5,7 @@ import { IAudioMetadata } from 'music-metadata';
 declare global {
   interface Window {
     electron: {
+      initPlaylist(): Promise<string[]>;
       getMetadata(filePath: string): Promise<MetaDataInterface>;
       getBuffer(filePath: string): Promise<BufferConstructor>;
       updatePlaylist(

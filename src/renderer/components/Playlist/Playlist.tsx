@@ -1,5 +1,5 @@
 import './playlist.scss';
-import { MetaDataInterface } from 'interface';
+import { useEffect } from 'react';
 import Row from './Row';
 
 interface PlaylistInterface {

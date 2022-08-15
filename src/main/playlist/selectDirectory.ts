@@ -48,10 +48,16 @@ async function getCurrentPlaylist(): Promise<string[]> {
 // Entrance of file, open up the dialog window, user will select directory.
 // When selected, recursive function is used to fetch all files from
 // said folder.
-export default async function selectDirectory(): Promise<string[]> {
+export default async function selectDirectory(
+  onLoadCheck: boolean
+): Promise<string[]> {
   // Current file paths in the main library already saved which then can be
   // used to relate to on which files are new.
   const currentPlaylist = await getCurrentPlaylist();
+  if (onLoadCheck === true) {
+    return currentPlaylist;
+  }
+
   const response = await dialog.showOpenDialog({
     properties: ['openDirectory'],
   });

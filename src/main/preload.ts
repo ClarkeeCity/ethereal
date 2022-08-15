@@ -6,6 +6,7 @@ export type PlaylistUpdateChannel = 'update-playlist';
 // contextBridge avoids leaking privleged APIs into web content,
 // this is primary bridge between the renderer to main
 contextBridge.exposeInMainWorld('electron', {
+  initPlaylist: () => ipcRenderer.invoke('mounted:playlistComponent'),
   getMetadata: (filePath: string) =>
     ipcRenderer.invoke('fetch:metadata', filePath),
   getBuffer: (filePath: string) =>

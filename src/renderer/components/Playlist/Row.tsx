@@ -8,16 +8,11 @@ interface RowInterface {
 
 export default function Row({ fileData, setStream }: RowInterface) {
   const [fileMetadata, setFileMetadata] = useState<MetaDataInterface>();
-  const [title, setTitle] = useState<string>('');
-
-  // TODO: We will ned to go into main, and fetch the file metadata that way,
-  // when done, useEffect will update this JSX.
   useEffect(() => {
     const fetchData = async () => {
       const data = await window.electron.getMetadata(fileData);
       setFileMetadata(data);
     };
-
     fetchData();
   }, [fileData]);
   return (

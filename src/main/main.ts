@@ -16,6 +16,7 @@ import MenuBuilder from './menu';
 import { resolveHtmlPath } from './util';
 import createBuffer from './playlist/createBuffer';
 import fetchMetadata from './playlist/fetchMetadata';
+import selectDirectory from './playlist/selectDirectory';
 
 class AppUpdater {
   constructor() {
@@ -26,6 +27,8 @@ class AppUpdater {
 }
 
 let mainWindow: BrowserWindow | null = null;
+
+// START OF IPC BROADCASTS //
 
 // Two way broadcast for play. Renderer will request a file, main will send
 // file data, then in the renderer, we can play the song we want.
@@ -38,6 +41,13 @@ ipcMain.handle('fetch:metadata', async (_event, arg) => {
   const resolve = await fetchMetadata(arg);
   return resolve;
 });
+
+ipcMain.handle('mounted:playlistComponent', async () => {
+  const resolve = await selectDirectory(true);
+  return resolve;
+});
+
+// END OF IPC BROADCASTS //
 
 if (process.env.NODE_ENV === 'production') {
   const sourceMapSupport = require('source-map-support');
@@ -136,10 +146,6 @@ app.on('window-all-closed', () => {
 app
   .whenReady()
   .then(() => {
-    // Turn on the "broadcast" for playlist-status.
-    ipcMain.on('playlist-status', (_event, value) => {
-      console.log('IPCmain-playlist-status: ', value);
-    });
     createWindow();
     app.on('activate', () => {
       // On macOS it's common to re-create a window in the app when the
