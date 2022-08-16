@@ -11,6 +11,10 @@ import InterfaceMain from './components/Containers/InterfaceMain/InterfaceMain';
 import AppContainer from './components/Containers/AppContainer/AppContainer';
 import PlaylistContainer from './components/Containers/PlaylistContainer/PlaylistContainer';
 // import TitleBar from './components/TitleBar/TitleBar';
+import Player from '../Player';
+import Row from './components/Playlist/Row';
+
+const player = new Player();
 
 export default function App() {
   // List of files to render on playlist.
@@ -27,14 +31,18 @@ export default function App() {
       setData(value);
     }
   );
-  // Passing props down to the UI to individually play songs, that way globally,
-  // we can access song information.
+
   const [stream, setStream] = useState<string[]>(['']);
-  const sound = new Howl({
-    src: stream,
-    html5: true,
-  });
-  sound.play();
+  player.playlist = data;
+  // anytime the stream is updated, set new howl to play.
+  player.setHowl(stream);
+  player.play();
+
+  const songs = data
+    ? data.map((song) => (
+        <Row key={song} fileData={song} setStream={setStream} />
+      ))
+    : [];
 
   return (
     <AppContainer>
@@ -45,7 +53,8 @@ export default function App() {
         <InterfaceMain>
           <PlaylistContainer>
             <Sidebar />
-            <Playlist playlistData={data} setStream={setStream} />
+            {/* <Playlist playlistData={data} setStream={setStream} /> */}
+            <Playlist>{songs}</Playlist>
             <Sidebar />
           </PlaylistContainer>
           <BottomBar />

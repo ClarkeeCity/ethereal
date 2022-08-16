@@ -2,19 +2,10 @@ import './playlist.scss';
 import Row from './Row';
 
 interface PlaylistInterface {
-  playlistData: string[];
-  setStream: React.Dispatch<string[]>;
+  children: JSX.Element | JSX.Element[];
 }
 
-export default function Playlist({
-  playlistData,
-  setStream,
-}: PlaylistInterface) {
-  const songs = playlistData
-    ? playlistData.map((song) => (
-        <Row key={song} fileData={song} setStream={setStream} />
-      ))
-    : [];
+export default function Playlist({ children }: PlaylistInterface) {
   return (
     <div id="playlist">
       <table className="list">
@@ -29,7 +20,7 @@ export default function Playlist({
             <td>Plays</td>
           </tr>
         </thead>
-        <tbody>{songs}</tbody>
+        <tbody>{children}</tbody>
       </table>
     </div>
   );
