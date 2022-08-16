@@ -6,6 +6,10 @@ import Playlist from './components/Playlist/Playlist';
 import Experiences from './components/Experiences/Experiences';
 import Sidebar from './components/Sidebar/Sidebar';
 import BottomBar from './components/BottomBar/BottomBar';
+import InterfaceContainer from './components/Containers/InterfaceContainer/InterfaceContainer';
+import InterfaceMain from './components/Containers/InterfaceMain/InterfaceMain';
+import AppContainer from './components/Containers/AppContainer/AppContainer';
+import PlaylistContainer from './components/Containers/PlaylistContainer/PlaylistContainer';
 // import TitleBar from './components/TitleBar/TitleBar';
 
 export default function App() {
@@ -33,32 +37,20 @@ export default function App() {
   sound.play();
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        width: '100vw',
-        height: '100vh',
-      }}
-    >
+    <AppContainer>
       {/* If we want to have a custom titlebar */}
       {/* <TitleBar /> */}
-      <div id="app">
+      <InterfaceContainer>
         <Experiences />
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-          }}
-        >
-          <div style={{ display: 'flex', height: '100%' }}>
+        <InterfaceMain>
+          <PlaylistContainer>
             <Sidebar />
             <Playlist playlistData={data} setStream={setStream} />
             <Sidebar />
-          </div>
+          </PlaylistContainer>
           <BottomBar />
-        </div>
-      </div>
-    </div>
+        </InterfaceMain>
+      </InterfaceContainer>
+    </AppContainer>
   );
 }
