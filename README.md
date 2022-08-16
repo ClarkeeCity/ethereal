@@ -14,13 +14,12 @@
 
 <p align="center">
   <a href="#key-features">Key Features</a> •
-  <a href="how-to-use">How To Use</a> •
-  <a href="download">Download</a> •
-  <a href="credits">Credits</a> •
+  <a href="#how-to-use">How To Use</a> •
+  <a href="#credits">Credits</a> •
   <a href="#license">License</a>
 </p>
 
-![screenshot]()
+<!-- ![screenshot]() -->
 
 ## Key Features
 
@@ -50,12 +49,12 @@ $ yarn start
 This software uses the following:
 
 - [Electron](https://www.electronjs.org/)
-- [React] (https://reactjs.org/)
+- [React](https://reactjs.org/)
 - [Node.js](https://nodejs.org/)
-- [Sass] (https://sass-lang.com/)
-- [Howler.js] (https://howlerjs.com/)
-- [music-metadata] (https://github.com/borewit/music-metadata)
-- [electron-react-boilerplate] (https://electron-react-boilerplate.js.org/)
+- [Sass](https://sass-lang.com/)
+- [Howler.js](https://howlerjs.com/)
+- [music-metadata](https://github.com/borewit/music-metadata)
+- [electron-react-boilerplate](https://electron-react-boilerplate.js.org/)
 
 ## Support
 
