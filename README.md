@@ -19,7 +19,7 @@
   <a href="#license">License</a>
 </p>
 
-<!-- ![screenshot]() -->
+<img src="assets/prototype.png" alt="Ethereal Prototype" height="auto">
 
 ## Key Features
 
