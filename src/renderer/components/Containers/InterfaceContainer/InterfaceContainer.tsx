@@ -55,24 +55,18 @@ export default function InterfaceContainer({
     : [];
   return (
     <div id="interface-container">
-      <Experiences />
+      {/* <Experiences /> */}
       <InterfaceMain>
         <PlaylistContainer>
           <Sidebar />
           <Playlist>{songs}</Playlist>
           <Sidebar />
         </PlaylistContainer>
-        <BottomBar>
-          <MediaCtrl>
-            <SkipBackward />
-            <PlayPause
-              player={player}
-              toggle={playToggle}
-              setToggle={setPlayToggle}
-            />
-            <SkipForward />
-          </MediaCtrl>
-        </BottomBar>
+        <BottomBar
+          player={player}
+          toggle={playToggle}
+          setToggle={setPlayToggle}
+        />
       </InterfaceMain>
     </div>
   );

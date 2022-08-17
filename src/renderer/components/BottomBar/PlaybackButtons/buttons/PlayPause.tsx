@@ -1,6 +1,5 @@
 import Player from 'Player';
 import { SetStateAction } from 'react';
-import { IoMdPlay } from 'react-icons/io';
 import Pause from './Pause';
 import Play from './Play';
 

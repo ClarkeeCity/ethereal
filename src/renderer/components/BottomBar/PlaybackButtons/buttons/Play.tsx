@@ -9,7 +9,6 @@ export default function Play({ player, setToggle }: PlayPauseControlProps) {
       onClick={() => {
         setToggle(true);
         player.play();
-        console.log('playing');
       }}
       className="playbackButton"
     >

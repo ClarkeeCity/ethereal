@@ -1,0 +1,15 @@
+@import "../main.scss";
+
+.album-display {
+  display: flex;
+  justify-content: center;
+  height: $bottombar-size;
+  width: $bottombar-size;
+  font-size: $mediabutton-size;
+  background-color: $surface;
+  margin-right: 15px;
+
+  * {
+    color: desaturate(rgba($highlight, $alpha: 0.4), 25%);
+  }
+}

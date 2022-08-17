@@ -1,0 +1,17 @@
+@import '../main.scss';
+
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 3px;
+  background-color: rgba($text-main, 0.3);
+  width: 100px;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 5px;
+  height: 13px;
+  background-color: $text-main;
+}

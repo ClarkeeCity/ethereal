@@ -2,7 +2,7 @@
 
 .sidebar {
   background-color: $main;
-  width: 198px;
+  width: $sidebar-width;
   position: sticky;
   flex-grow: 0;
   flex-shrink: 0;
