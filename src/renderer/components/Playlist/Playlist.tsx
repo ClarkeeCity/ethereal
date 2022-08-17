@@ -1,26 +1,19 @@
 import './playlist.scss';
+import Header from './Header';
 
-interface PlaylistInterface {
+interface PlaylistProps {
   children: JSX.Element | JSX.Element[];
 }
 
-export default function Playlist({ children }: PlaylistInterface) {
+export default function Playlist({ children }: PlaylistProps) {
   return (
     <div id="playlist">
-      <table className="list">
-        <thead>
-          <tr>
-            <td>Title</td>
-            <td>Artist</td>
-            <td>Album</td>
-            <td>Genre</td>
-            <td>Year</td>
-            <td>Time</td>
-            <td>Plays</td>
-          </tr>
-        </thead>
-        <tbody>{children}</tbody>
-      </table>
+      <Header />
+      <div className="innerTable">
+        <table className="list">
+          <tbody>{children}</tbody>
+        </table>
+      </div>
     </div>
   );
 }
