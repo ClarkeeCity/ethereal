@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/lines-between-class-members */
 import { Howl } from 'howler';
+import { SetStateAction } from 'react';
 
 export default class Player {
   playlist: string[];
@@ -20,6 +21,8 @@ export default class Player {
       src: stream,
       html5: true,
     });
+
+    this.play();
   }
 
   setCurrent(current: JSX.Element) {
@@ -27,15 +30,17 @@ export default class Player {
   }
 
   play() {
-    if (this.howl) this.howl.play();
+    if (this.howl !== null) this.howl.play();
   }
 
-  static pause() {
-    // pause
+  pause() {
+    if (this.howl !== null) {
+      this.howl.pause();
+    }
   }
 
-  static skipForward() {
-    // ship to next song
+  skipForward() {
+    console.log(this.playlist);
   }
 
   static skipBackward() {

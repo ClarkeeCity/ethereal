@@ -1,12 +1,13 @@
 import { MetaDataInterface } from 'interface';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, SetStateAction } from 'react';
 
 interface RowInterface {
   fileData: string;
   setStream: React.Dispatch<string[]>;
+  setToggle: React.Dispatch<SetStateAction<boolean>>;
 }
 
-export default function Row({ fileData, setStream }: RowInterface) {
+export default function Row({ fileData, setStream, setToggle }: RowInterface) {
   const [fileMetadata, setFileMetadata] = useState<MetaDataInterface>();
   // Display metadata for this data row.
   useEffect(() => {
@@ -25,6 +26,8 @@ export default function Row({ fileData, setStream }: RowInterface) {
           window.electron.getBuffer(fileData).then((resolve) => {
             setStream([`data:audio/x-mp3;base64,${resolve}`]);
           });
+
+          setToggle(true);
         }}
         data-filepath={fileData}
       >

@@ -1,10 +1,10 @@
+import Player from 'Player';
 import './bottombar.scss';
-import MediaCtrl from './MediaCtrl/MediaCtrl';
 
-export default function BottomBar() {
-  return (
-    <div id="bottombar">
-      <MediaCtrl />
-    </div>
-  );
+interface BottomBarProps {
+  children: JSX.Element | JSX.Element[];
+}
+
+export default function BottomBar({ children }: BottomBarProps) {
+  return <div id="bottombar">{children}</div>;
 }

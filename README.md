@@ -20,6 +20,9 @@
 </p>
 
 <img src="assets/prototype.png" alt="Ethereal Prototype" height="auto">
+<h4 align="center">
+  Current UI does not match the prototype in total.
+</h4>
 
 ## Key Features
 

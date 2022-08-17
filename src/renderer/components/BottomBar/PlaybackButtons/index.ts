@@ -3,5 +3,6 @@ import Play from './buttons/Play';
 import Pause from './buttons/Pause';
 import SkipForward from './buttons/SkipForward';
 import SkipBackward from './buttons/SkipBackward';
+import PlayPause from './buttons/PlayPause';
 
-export { Play, Pause, SkipForward, SkipBackward };
+export { Play, Pause, SkipForward, SkipBackward, PlayPause };

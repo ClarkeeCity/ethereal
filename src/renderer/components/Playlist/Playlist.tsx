@@ -1,5 +1,4 @@
 import './playlist.scss';
-import Row from './Row';
 
 interface PlaylistInterface {
   children: JSX.Element | JSX.Element[];

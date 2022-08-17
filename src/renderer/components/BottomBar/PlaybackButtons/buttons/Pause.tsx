@@ -1,11 +1,19 @@
 import { IoMdPause } from 'react-icons/io';
-import PlayBackButton from '../PlaybackButton';
+import { PlayPauseControlProps } from '../interface';
+import '../playbackbutton.scss';
 
-export default function Pause() {
+export default function Pause({ player, setToggle }: PlayPauseControlProps) {
   return (
-    <PlayBackButton
-      onClick={() => console.log('pause')}
-      label={<IoMdPause />}
-    />
+    <button
+      type="button"
+      onClick={() => {
+        setToggle(false);
+        player.pause();
+        console.log('paused');
+      }}
+      className="playbackButton"
+    >
+      <IoMdPause />
+    </button>
   );
 }
