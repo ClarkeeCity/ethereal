@@ -7,4 +7,5 @@
   flex-grow: 0;
   flex-shrink: 0;
   margin-bottom: $bottombar-size;
+  height: calc(100% - $bottombar-size);
 }

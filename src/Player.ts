@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/lines-between-class-members */
 import { Howl } from 'howler';
-import { SetStateAction } from 'react';
 
 export default class Player {
   playlist: string[];

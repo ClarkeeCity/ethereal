@@ -1,9 +1,10 @@
+import AlbumDisplay from '../AlbumDisplay/AlbumDisplay';
 import './sidebar.scss';
 
-export default function Sidebar() {
-  return (
-    <div className="sidebar">
-      <span>SideBar</span>
-    </div>
-  );
+interface SidebarProps {
+  children: JSX.Element | JSX.Element[];
+}
+
+export default function Sidebar({ children }: SidebarProps) {
+  return <div className="sidebar">{children}</div>;
 }

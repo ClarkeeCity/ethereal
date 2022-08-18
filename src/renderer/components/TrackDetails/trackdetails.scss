@@ -1,0 +1,27 @@
+@import "../main.scss";
+
+#track-information-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 14px;
+  height: $table-header-height;
+  padding-left: 3px;
+
+  span {
+    color: $text-secondary;
+  }
+}
+
+#track-information {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100px;
+  padding: 0 3px;
+  font-size: 14px;
+
+  span {
+    color: $text-main;
+  }
+}

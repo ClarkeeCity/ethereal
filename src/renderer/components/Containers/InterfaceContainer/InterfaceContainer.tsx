@@ -1,6 +1,7 @@
 import { IpcRendererEvent } from 'electron';
 import Player from 'Player';
 import { SetStateAction, useEffect, useState } from 'react';
+import AlbumDisplay from 'renderer/components/AlbumDisplay/AlbumDisplay';
 import BottomBar from 'renderer/components/BottomBar/BottomBar';
 import MediaCtrl from 'renderer/components/BottomBar/MediaCtrl/MediaCtrl';
 import {
@@ -12,6 +13,8 @@ import Experiences from 'renderer/components/Experiences/Experiences';
 import Playlist from 'renderer/components/Playlist/Playlist';
 import Row from 'renderer/components/Playlist/Row';
 import Sidebar from 'renderer/components/Sidebar/Sidebar';
+import TrackDetails from 'renderer/components/TrackDetails/TrackDetails';
+import Upcoming from 'renderer/components/Upcoming/Upcoming';
 import InterfaceMain from '../InterfaceMain/InterfaceMain';
 import PlaylistContainer from '../PlaylistContainer/PlaylistContainer';
 import './interfacecontainer.scss';
@@ -58,9 +61,15 @@ export default function InterfaceContainer({
       {/* <Experiences /> */}
       <InterfaceMain>
         <PlaylistContainer>
-          <Sidebar />
+          <Sidebar>
+            <span>left</span>
+          </Sidebar>
           <Playlist>{songs}</Playlist>
-          <Sidebar />
+          <Sidebar>
+            <Upcoming />
+            <TrackDetails />
+            <AlbumDisplay size="large" />
+          </Sidebar>
         </PlaylistContainer>
         <BottomBar
           player={player}

@@ -1,0 +1,39 @@
+@import "../main.scss";
+
+#upcoming {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - $sidebar-width - $table-header-height - 145px);
+  overflow-y: auto;
+}
+
+#upcoming-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 14px;
+  height: $table-header-height;
+  padding-left: 3px;
+
+  span {
+    color: $text-secondary;
+  }
+}
+
+.upcoming-track {
+  display: flex;
+  align-items: center;
+  padding: 3px 10px;
+}
+
+.upcoming-track-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  font-size: 12px;
+  padding: 0px 0 0px 10px;
+}
+
+.details-secondary {
+  color: $text-secondary;
+}

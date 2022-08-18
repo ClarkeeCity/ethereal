@@ -3,13 +3,29 @@
 .album-display {
   display: flex;
   justify-content: center;
-  height: $bottombar-size;
-  width: $bottombar-size;
-  font-size: $mediabutton-size;
   background-color: $surface;
-  margin-right: 15px;
+  align-items: center;
 
   * {
     color: desaturate(rgba($highlight, $alpha: 0.4), 25%);
   }
+}
+
+.album-display--small {
+  font-size: $mediabutton-size * 1.1;
+  height: $bottombar-size / 1.3;
+  width: $bottombar-size / 1.3;
+}
+
+// This one still needs to be 'tuned'
+.album-display--medium {
+  font-size: $mediabutton-size * 1.4;
+  height: $bottombar-size;
+  width: $bottombar-size;
+}
+
+.album-display--large {
+  font-size: $mediabutton-size * 5;
+  height: $sidebar-width;
+  width: $sidebar-width;
 }

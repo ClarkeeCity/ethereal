@@ -24,7 +24,7 @@ export default function BottomBar({
   return (
     <div id="bottombar">
       <div className="sidebar-width">
-        <AlbumDisplay />
+        <AlbumDisplay size="medium" />
         <MediaCtrl>
           <SkipBackward />
           <PlayPause player={player} toggle={toggle} setToggle={setToggle} />
