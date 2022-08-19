@@ -1,13 +1,20 @@
 import { MetaDataInterface } from 'interface';
+import Player from 'Player';
 import React, { useState, useEffect, SetStateAction } from 'react';
 
 interface RowInterface {
+  player: Player;
   fileData: string;
   setStream: React.Dispatch<string[]>;
   setToggle: React.Dispatch<SetStateAction<boolean>>;
 }
 
-export default function Row({ fileData, setStream, setToggle }: RowInterface) {
+export default function Row({
+  player,
+  fileData,
+  setStream,
+  setToggle,
+}: RowInterface) {
   const [fileMetadata, setFileMetadata] = useState<MetaDataInterface>();
   // Display metadata for this data row.
   useEffect(() => {

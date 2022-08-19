@@ -3,13 +3,6 @@ import Player from 'Player';
 import { SetStateAction, useEffect, useState } from 'react';
 import AlbumDisplay from 'renderer/components/AlbumDisplay/AlbumDisplay';
 import BottomBar from 'renderer/components/BottomBar/BottomBar';
-import MediaCtrl from 'renderer/components/BottomBar/MediaCtrl/MediaCtrl';
-import {
-  PlayPause,
-  SkipBackward,
-  SkipForward,
-} from 'renderer/components/BottomBar/PlaybackButtons';
-import Experiences from 'renderer/components/Experiences/Experiences';
 import Playlist from 'renderer/components/Playlist/Playlist';
 import Row from 'renderer/components/Playlist/Row';
 import Sidebar from 'renderer/components/Sidebar/Sidebar';
@@ -49,6 +42,7 @@ export default function InterfaceContainer({
   const songs = data
     ? data.map((song) => (
         <Row
+          player={player}
           key={song}
           fileData={song}
           setStream={setStream}

@@ -3,13 +3,15 @@ import { Howl } from 'howler';
 
 export default class Player {
   playlist: string[];
-  current: JSX.Element | null;
+  selected: JSX.Element | JSX.Element[] | null;
+  playing: JSX.Element | null;
   howl: Howl | null;
 
   constructor() {
     this.playlist = [];
+    this.selected = null;
+    this.playing = null;
     this.howl = null;
-    this.current = null;
   }
 
   setHowl(stream: string[]) {
@@ -24,8 +26,8 @@ export default class Player {
     this.play();
   }
 
-  setCurrent(current: JSX.Element) {
-    this.current = current;
+  setCurrentPlaying(current: JSX.Element) {
+    this.playing = current;
   }
 
   play() {

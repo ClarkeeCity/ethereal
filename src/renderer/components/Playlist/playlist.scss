@@ -39,13 +39,13 @@
   // tr:nth-child(even):hover {
   //   background-color: darken($surface-dark, $darken-percentage);
   // }
-
-  tr:hover {
-    background-color: darken($surface, $darken-percentage);
-  }
 }
 
 .innerTable {
   height: calc(100% - $bottombar-size - $table-header-height);
   overflow-y: auto;
+}
+
+.selected {
+  background-color: darken($surface, 4%);
 }
