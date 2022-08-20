@@ -1,13 +1,12 @@
 import Player from 'Player';
-import { SetStateAction } from 'react';
+import { SetStateAction, useEffect, useState } from 'react';
 import AlbumDisplay from '../AlbumDisplay/AlbumDisplay';
+import FiveStar from '../FiveStar/FiveStar';
 import './bottombar.scss';
 import MediaCtrl from './MediaCtrl/MediaCtrl';
 import { PlayPause, SkipBackward, SkipForward } from './PlaybackButtons';
-import TrackAdd from './TrackDetails/TrackAdd';
 import TrackDetails from './TrackDetails/TrackDetails';
 import TrackSlider from './TrackDetails/TrackSlider';
-import TrackTitle from './TrackDetails/TrackTitle';
 import Volume from './Volume/Volume';
 
 interface BottomBarProps {
@@ -21,6 +20,12 @@ export default function BottomBar({
   setToggle,
   player,
 }: BottomBarProps) {
+  const [trackTitle, setTrackTitle] = useState<string>();
+  useEffect(() => {
+    setTrackTitle(
+      `${player.playingTrack?.dataset.artist} - ${player.playingTrack?.dataset.title}`
+    );
+  }, [player.playingTrack]);
   return (
     <div id="bottombar">
       <div className="sidebar-width">
@@ -32,23 +37,19 @@ export default function BottomBar({
         </MediaCtrl>
       </div>
       <div id="middle">
-        <Volume />
+        <Volume player={player} />
         <TrackDetails>
-          <TrackTitle />
-          <TrackAdd />
+          <div id="track-title">
+            <b>{trackTitle}</b>
+          </div>
+          <div id="track-additional">
+            <FiveStar />
+            <span>{player.playingTrack?.dataset.length}</span>
+          </div>
           <TrackSlider />
         </TrackDetails>
         {/* blank spacing for padding */}
-        <div
-          style={{
-            display: 'inline-block',
-            width: '128px',
-            flexShrink: 0,
-            flexGrow: 0,
-          }}
-        >
-          &nbsp;
-        </div>
+        <div id="bottom-bar-pad">&nbsp;</div>
       </div>
       <div className="sidebar-width">&nbsp;</div>
     </div>

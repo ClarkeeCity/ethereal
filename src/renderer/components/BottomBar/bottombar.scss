@@ -32,3 +32,52 @@
   height: 100%;
   margin: 0 30px;
 }
+
+#bottom-bar-pad {
+  width: 128px !important;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+#track-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+  width: 100%;
+  font-size: 14px;
+  margin: 0 $table-header-height;
+}
+
+#track-additional {
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 0 4px 0;
+}
+
+#track-title {
+}
+
+#track-album {
+  position: absolute;
+  flex-grow: 0;
+  flex-shrink: 0;
+  bottom: 18px;
+  font-size: 14px;
+}
+
+#progress {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 5px;
+  background-color: rgba($text-main, 0.3);
+  width: 100%;
+}
+
+#progress::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 5px;
+  background-color: $text-main;
+}

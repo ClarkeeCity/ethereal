@@ -1,6 +1,6 @@
 import { IpcRendererEvent } from 'electron';
 import Player from 'Player';
-import { SetStateAction, useEffect, useState } from 'react';
+import { SetStateAction, useEffect, useRef, useState } from 'react';
 import AlbumDisplay from 'renderer/components/AlbumDisplay/AlbumDisplay';
 import BottomBar from 'renderer/components/BottomBar/BottomBar';
 import Playlist from 'renderer/components/Playlist/Playlist';
@@ -8,7 +8,6 @@ import Row from 'renderer/components/Playlist/Row';
 import Sidebar from 'renderer/components/Sidebar/Sidebar';
 import TrackDetails from 'renderer/components/TrackDetails/TrackDetails';
 import Upcoming from 'renderer/components/Upcoming/Upcoming';
-import InterfaceMain from '../InterfaceMain/InterfaceMain';
 import PlaylistContainer from '../PlaylistContainer/PlaylistContainer';
 import './interfacecontainer.scss';
 
@@ -38,6 +37,7 @@ export default function InterfaceContainer({
   );
 
   const [playToggle, setPlayToggle] = useState<boolean>(false);
+  const selectionRef = useRef(null);
 
   const songs = data
     ? data.map((song) => (
@@ -47,13 +47,14 @@ export default function InterfaceContainer({
           fileData={song}
           setStream={setStream}
           setToggle={setPlayToggle}
+          prevClick={selectionRef}
         />
       ))
     : [];
   return (
     <div id="interface-container">
       {/* <Experiences /> */}
-      <InterfaceMain>
+      <div id="interface-main">
         <PlaylistContainer>
           <Sidebar>
             <span>left</span>
@@ -70,7 +71,7 @@ export default function InterfaceContainer({
           toggle={playToggle}
           setToggle={setPlayToggle}
         />
-      </InterfaceMain>
+      </div>
     </div>
   );
 }

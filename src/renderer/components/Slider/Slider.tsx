@@ -1,5 +1,9 @@
 import './slider.scss';
 
-export default function Slider() {
-  return <input type="range" min="1" max="100" value="50" className="slider" />;
+interface SliderProps {
+  children: JSX.Element;
+}
+
+export default function Slider({ children }: SliderProps) {
+  return children;
 }

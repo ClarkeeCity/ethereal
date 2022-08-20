@@ -3,18 +3,18 @@ import { Howl } from 'howler';
 
 export default class Player {
   playlist: string[];
+  playingTrack: (EventTarget & HTMLTableRowElement) | null;
   selected: JSX.Element | JSX.Element[] | null;
-  playing: JSX.Element | null;
   howl: Howl | null;
 
   constructor() {
     this.playlist = [];
     this.selected = null;
-    this.playing = null;
     this.howl = null;
+    this.playingTrack = null;
   }
 
-  setHowl(stream: string[]) {
+  public setHowl(stream: string[]) {
     if (this.howl != null) {
       this.howl.unload();
     }
@@ -26,27 +26,24 @@ export default class Player {
     this.play();
   }
 
-  setCurrentPlaying(current: JSX.Element) {
-    this.playing = current;
-  }
-
-  play() {
+  public play() {
     if (this.howl !== null) this.howl.play();
   }
 
-  pause() {
+  public pause() {
     if (this.howl !== null) {
       this.howl.pause();
     }
   }
 
-  skipForward() {
+  public skipForward() {
     console.log(this.playlist);
   }
 
-  static skipBackward() {
+  public skipBackward() {
     // if the song is at some kth duration, then repeat at the start
     // else, go back to previous song
+    console.log(this.playlist);
   }
 
   shufflePlaylist() {
@@ -54,8 +51,8 @@ export default class Player {
     console.log(this.playlist);
   }
 
-  static volume() {
-    // control volume for this class
+  public volume(input: number) {
+    this.howl?.volume(input / 100);
   }
 
   static seek() {
