@@ -38,7 +38,7 @@ ipcMain.handle('create:song-buffer', async (_event, arg) => {
 });
 
 ipcMain.handle('fetch:metadata', async (_event, arg) => {
-  const resolve = await fetchMetadata(arg);
+  const resolve = await fetchMetadata(arg.path, arg.type);
   return resolve;
 });
 

@@ -62,8 +62,8 @@ export default function InterfaceContainer({
           <Playlist>{songs}</Playlist>
           <Sidebar>
             <Upcoming />
-            <TrackDetails />
-            <AlbumDisplay size="large" />
+            <TrackDetails player={player} />
+            <AlbumDisplay player={player} size="large" />
           </Sidebar>
         </PlaylistContainer>
         <BottomBar

@@ -21,8 +21,8 @@ export default function Row({
   // Display metadata for this data row.
   useEffect(() => {
     const fetchData = async () => {
-      const data = await window.electron.getMetadata(fileData);
-      setFileMetadata(data);
+      const data = await window.electron.getMetadata(fileData, 'data');
+      setFileMetadata(data as MetaDataInterface);
     };
     fetchData();
   }, [fileData]);

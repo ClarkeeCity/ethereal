@@ -3,7 +3,7 @@ import { Howl } from 'howler';
 
 export default class Player {
   playlist: string[];
-  playingTrack: (EventTarget & HTMLTableRowElement) | null;
+  playingTrack: (EventTarget & HTMLTableRowElement) | undefined;
   selected: JSX.Element | JSX.Element[] | null;
   howl: Howl | null;
 
@@ -11,7 +11,7 @@ export default class Player {
     this.playlist = [];
     this.selected = null;
     this.howl = null;
-    this.playingTrack = null;
+    this.playingTrack = undefined;
   }
 
   public setHowl(stream: string[]) {

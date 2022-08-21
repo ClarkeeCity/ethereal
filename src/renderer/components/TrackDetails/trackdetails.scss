@@ -16,12 +16,15 @@
 #track-information {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   height: 100px;
   padding: 0 3px;
   font-size: 14px;
+  position: relative;
 
   span {
     color: $text-main;
+    white-space: nowrap;
+    padding-bottom: 5px;
+
   }
 }

@@ -45,6 +45,7 @@
   justify-content: space-around;
   height: 100%;
   width: 100%;
+  min-width: 252px;
   font-size: 14px;
   margin: 0 $table-header-height;
 }
@@ -56,6 +57,7 @@
 }
 
 #track-title {
+  /* white-space: nowrap; */
 }
 
 #track-album {

@@ -2,12 +2,12 @@ import Player from 'Player';
 import { SetStateAction, useEffect, useState } from 'react';
 import AlbumDisplay from '../AlbumDisplay/AlbumDisplay';
 import FiveStar from '../FiveStar/FiveStar';
-import './bottombar.scss';
 import MediaCtrl from './MediaCtrl/MediaCtrl';
 import { PlayPause, SkipBackward, SkipForward } from './PlaybackButtons';
 import TrackDetails from './TrackDetails/TrackDetails';
 import TrackSlider from './TrackDetails/TrackSlider';
 import Volume from './Volume/Volume';
+import './bottombar.scss';
 
 interface BottomBarProps {
   toggle: boolean;
@@ -29,7 +29,7 @@ export default function BottomBar({
   return (
     <div id="bottombar">
       <div className="sidebar-width">
-        <AlbumDisplay size="medium" />
+        <AlbumDisplay player={player} size="medium" />
         <MediaCtrl>
           <SkipBackward />
           <PlayPause player={player} toggle={toggle} setToggle={setToggle} />

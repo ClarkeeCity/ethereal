@@ -7,10 +7,9 @@ export type PlaylistUpdateChannel = 'update-playlist';
 // this is primary bridge between the renderer to main
 contextBridge.exposeInMainWorld('electron', {
   initPlaylist: () => ipcRenderer.invoke('mounted:playlistComponent'),
-  getMetadata: (filePath: string) =>
-    ipcRenderer.invoke('fetch:metadata', filePath),
-  getBuffer: (filePath: string) =>
-    ipcRenderer.invoke('create:song-buffer', filePath),
+  getMetadata: (path: string, type: string) =>
+    ipcRenderer.invoke('fetch:metadata', { path, type }),
+  getBuffer: (path: string) => ipcRenderer.invoke('create:song-buffer', path),
   updatePlaylist: (
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     callback: (event: Electron.IpcRendererEvent, ...args: any[]) => void
