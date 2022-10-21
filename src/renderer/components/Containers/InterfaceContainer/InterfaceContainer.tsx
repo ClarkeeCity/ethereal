@@ -20,9 +20,10 @@ export default function InterfaceContainer({
   setStream,
   player,
 }: InterfaceContainerProps) {
-  // List of files to render on playlist.
+  // List of files to render to the playlist playlist.
   const [data, setData] = useState<string[]>([]);
   player.playlist = data;
+
   // Fetch files from Ethereal.library if it exists onmount.
   useEffect(() => {
     // eslint-disable-next-line promise/catch-or-return, promise/always-return
@@ -30,15 +31,16 @@ export default function InterfaceContainer({
       setData(resolve);
     });
   }, []);
+
   window.electron.updatePlaylist(
     (_event: IpcRendererEvent, value: SetStateAction<string[]>) => {
       setData(value);
     }
   );
 
+  // useState for playing or pausing audio. Used on each row and bottom bar.
   const [playToggle, setPlayToggle] = useState<boolean>(false);
   const selectionRef = useRef(null);
-
   const songs = data
     ? data.map((song) => (
         <Row
@@ -56,9 +58,9 @@ export default function InterfaceContainer({
       {/* <Experiences /> */}
       <div id="interface-main">
         <PlaylistContainer>
-          <Sidebar>
+          {/* <Sidebar>
             <span>left</span>
-          </Sidebar>
+          </Sidebar> */}
           <Playlist>{songs}</Playlist>
           <Sidebar>
             <Upcoming />

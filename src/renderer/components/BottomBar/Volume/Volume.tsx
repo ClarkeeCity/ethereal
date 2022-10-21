@@ -33,28 +33,27 @@ export default function Volume({ player }: VolumeProps) {
     if (value <= 66 && value > 33) return <IoMdVolumeLow />;
     return <IoMdVolumeMute />;
   }
+
   return (
-    <>
-      <div id="volume">
-        {slider.icon}
-        <Slider>
-          <input
-            type="range"
-            min="0"
-            value={slider.value}
-            max="100"
-            className="slider"
-            width="10px"
-            onInput={(event) => {
-              const updateObj = {} as SliderValues;
-              // eslint-disable-next-line react/no-this-in-sfc
-              updateObj.value = (event.target as HTMLInputElement).value;
-              updateObj.icon = setIcon(slider.value);
-              setSlider(updateObj);
-            }}
-          />
-        </Slider>
-      </div>
-    </>
+    <div id="volume">
+      {slider.icon}
+      <Slider>
+        <input
+          type="range"
+          min="0"
+          value={slider.value}
+          max="100"
+          className="slider"
+          width="10px"
+          onInput={(event) => {
+            const updateObj = {} as SliderValues;
+            // eslint-disable-next-line react/no-this-in-sfc
+            updateObj.value = (event.target as HTMLInputElement).value;
+            updateObj.icon = setIcon(slider.value);
+            setSlider(updateObj);
+          }}
+        />
+      </Slider>
+    </div>
   );
 }

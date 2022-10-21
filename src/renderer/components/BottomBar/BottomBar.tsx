@@ -36,6 +36,7 @@ export default function BottomBar({
           <SkipForward />
         </MediaCtrl>
       </div>
+
       <div id="middle">
         <Volume player={player} />
         <TrackDetails>
@@ -46,11 +47,12 @@ export default function BottomBar({
             <FiveStar />
             <span>{player.playingTrack?.dataset.length}</span>
           </div>
-          <TrackSlider />
+          <TrackSlider player={player} />
         </TrackDetails>
         {/* blank spacing for padding */}
         <div id="bottom-bar-pad">&nbsp;</div>
       </div>
+
       <div className="sidebar-width">&nbsp;</div>
     </div>
   );

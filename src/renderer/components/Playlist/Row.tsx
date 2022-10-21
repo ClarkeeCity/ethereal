@@ -67,6 +67,7 @@ export default function Row({
         data-genre={fileMetadata?.genre}
         data-year={fileMetadata?.year?.toString()}
         data-length={fileMetadata?.length?.toString()}
+        data-duration={fileMetadata?.duration}
         data-plays={0}
       >
         <td>{fileMetadata?.title}</td>
