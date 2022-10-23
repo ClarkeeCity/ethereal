@@ -8,6 +8,7 @@ import TrackDetails from './TrackDetails/TrackDetails';
 import TrackSlider from './TrackDetails/TrackSlider';
 import Volume from './Volume/Volume';
 import './bottombar.scss';
+import TimeDuration from './TrackDetails/TimeDuration';
 
 interface BottomBarProps {
   toggle: boolean;
@@ -21,11 +22,13 @@ export default function BottomBar({
   player,
 }: BottomBarProps) {
   const [trackTitle, setTrackTitle] = useState<string>();
+
   useEffect(() => {
     setTrackTitle(
       `${player.playingTrack?.dataset.artist} - ${player.playingTrack?.dataset.title}`
     );
   }, [player.playingTrack]);
+
   return (
     <div id="bottombar">
       <div className="sidebar-width">
@@ -45,7 +48,7 @@ export default function BottomBar({
           </div>
           <div id="track-additional">
             <FiveStar />
-            <span>{player.playingTrack?.dataset.length}</span>
+            <TimeDuration player={player} />
           </div>
           <TrackSlider player={player} />
         </TrackDetails>

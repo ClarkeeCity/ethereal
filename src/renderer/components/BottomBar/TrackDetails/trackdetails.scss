@@ -43,5 +43,14 @@
   background-color: $text-main;
 }
 
+#duration {
+  #seperator {
+    padding: 0 5px;
+  }
+  #remain {
+    opacity: 0.75;
+  }
+}
+
 
 

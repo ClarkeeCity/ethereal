@@ -2,19 +2,7 @@ import { parseFile, selectCover } from 'music-metadata';
 import path from 'path';
 import { IAudioMetadata } from 'music-metadata/lib/type';
 import { MetaDataInterface } from '../../interface';
-
-// Small function to convert seconds into a readable time foramt.
-function durationToTime(duration: number | undefined): string {
-  if (duration === undefined) return '0:00';
-  const roundedDuration = Math.round((duration + Number.EPSILON) * 100) / 100;
-  const m = roundedDuration / 60;
-  const r = m - Math.round(m);
-  const s = r >= 0 ? Math.round(r * 60) : Math.round(r * 60) * -1;
-  // setting up time format
-  const minutes = Math.round(m);
-  const seconds = s >= 10 ? s : `0${s}`;
-  return `${minutes}:${seconds}`;
-}
+import { durationToTime } from '../../utils/helpers';
 
 async function metadataFetch(filePath: string): Promise<IAudioMetadata> {
   return parseFile(filePath);
