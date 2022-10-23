@@ -1,7 +1,7 @@
 import AlbumDisplay from '../AlbumDisplay/AlbumDisplay';
 import './upcoming.scss';
 
-export default function Upcoming() {
+export default function UpcomingTrack() {
   return (
     <div className="upcoming-track">
       <AlbumDisplay size="small" />

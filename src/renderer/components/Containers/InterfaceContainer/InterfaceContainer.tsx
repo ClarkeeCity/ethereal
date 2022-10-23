@@ -8,6 +8,7 @@ import Row from 'renderer/components/Playlist/Row';
 import Sidebar from 'renderer/components/Sidebar/Sidebar';
 import TrackDetails from 'renderer/components/TrackDetails/TrackDetails';
 import Upcoming from 'renderer/components/Upcoming/Upcoming';
+// import UpcomingTrack from './UpcomingTrack';
 import PlaylistContainer from '../PlaylistContainer/PlaylistContainer';
 import './interfacecontainer.scss';
 
@@ -22,7 +23,7 @@ export default function InterfaceContainer({
 }: InterfaceContainerProps) {
   // List of files to render to the playlist playlist.
   const [data, setData] = useState<string[]>([]);
-  player.playlist = data;
+  player.setPlaylist(data);
 
   // Fetch files from Ethereal.library if it exists onmount.
   useEffect(() => {
@@ -42,7 +43,7 @@ export default function InterfaceContainer({
   const [playToggle, setPlayToggle] = useState<boolean>(false);
   const selectionRef = useRef(null);
   const songs = data
-    ? data.map((song) => (
+    ? data.map((song: string) => (
         <Row
           player={player}
           key={song}
@@ -53,6 +54,18 @@ export default function InterfaceContainer({
         />
       ))
     : [];
+
+  // TODO: upcomming
+  // const upcomming = player
+  //   .getUpcommingTracks()
+  //   .map((trackIndex: number, i: number) => {
+  //     // eslint-disable-next-line react/no-array-index-key
+  //     <UpcomingTrack title={player.getPlaylist()[trackIndex]} key={i} />;
+  // })
+
+
+  // player.setUpcommingTracks('shuffle');
+  // console.log(player.getUpcommingTracks());
   return (
     <div id="interface-container">
       {/* <Experiences /> */}
@@ -63,7 +76,7 @@ export default function InterfaceContainer({
           </Sidebar> */}
           <Playlist>{songs}</Playlist>
           <Sidebar>
-            <Upcoming />
+            <Upcoming>{/*upcomming*/}</Upcoming>
             <TrackDetails player={player} />
             <AlbumDisplay player={player} size="large" />
           </Sidebar>

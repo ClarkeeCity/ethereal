@@ -7,7 +7,6 @@ interface TrackSliderProps {
 }
 
 export default function TrackSlider({ player }: TrackSliderProps) {
-  const isMounted = useRef(false);
   const [scrubInput, setScrubInput] = useState<string>();
   const [currentTrackInterval, setTrackInterval] = useState<string>();
   const [trackAnimationCondition, setTrackAnimationCondition] =
@@ -15,14 +14,12 @@ export default function TrackSlider({ player }: TrackSliderProps) {
 
   const trackInterval = setInterval(() => {
     setTrackInterval(player.howl?.seek().toString());
-  }, 100);
+  }, 500);
 
   // Remove the interval when the component unmounts.
   useEffect(() => {
-    isMounted.current = true;
     return () => {
       clearInterval(trackInterval);
-      isMounted.current = false;
     };
   });
 

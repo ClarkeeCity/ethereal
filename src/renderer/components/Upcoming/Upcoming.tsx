@@ -1,25 +1,17 @@
 import './upcoming.scss';
 import UpcomingTrack from './UpcomingTrack';
 
-export default function Upcoming() {
+interface UpcommingProps {
+  children: JSX.Element | JSX.Element[];
+}
+
+export default function Upcoming({ children }: UpcommingProps) {
   return (
     <>
       <div id="upcoming-header">
         <span>Upcoming Tracks</span>
       </div>
-      <div id="upcoming">
-        <UpcomingTrack />
-        <UpcomingTrack />
-        <UpcomingTrack />
-        <UpcomingTrack />
-        <UpcomingTrack />
-        <UpcomingTrack />
-        <UpcomingTrack />
-        <UpcomingTrack />
-        <UpcomingTrack />
-        <UpcomingTrack />
-        <UpcomingTrack />
-      </div>
+      <div id="upcoming">{children}</div>
     </>
   );
 }

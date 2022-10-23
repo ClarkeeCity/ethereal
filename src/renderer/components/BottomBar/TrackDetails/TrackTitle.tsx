@@ -11,16 +11,26 @@ export default function TrackTitle({ player }: TrackTitleProps) {
   const scrollContainer = useRef(null);
   const [trackTitle, setTrackTitle] = useState<string>();
 
+  function resize() {
+    const parentWidth = titleContainer.current.parentNode.offsetWidth;
+    const nodeWidth = titleContainer.current.offsetWidth;
+
+    // TODO: Correct this animation.
+    titleContainer.current.className =
+      nodeWidth >= parentWidth - 30 ? 'title-mask scroll-container' : '';
+    scrollContainer.current.className =
+      nodeWidth >= parentWidth - 30 ? 'scroll-text' : '';
+  }
+
   useLayoutEffect(() => {
     // TODO: Find a way to just target the parent div and not the window.
-    window.addEventListener('resize', () => {
-      const parentWidth = titleContainer.current.parentNode.offsetWidth;
-      const nodeWidth = titleContainer.current.offsetWidth;
+    window.addEventListener('resize', resize);
 
-      titleContainer.current.className = (nodeWidth >= parentWidth - 30) ? 'title-mask scroll-container' : '';
-      scrollContainer.current.className = (nodeWidth >= parentWidth - 30) ? 'scroll-text' : '';
-    });
-  }, []);
+    // TODO: Nessessary?
+    return () => {
+      window.removeEventListener('resize', resize, false);
+    };
+  });
 
   useEffect(() => {
     setTrackTitle(

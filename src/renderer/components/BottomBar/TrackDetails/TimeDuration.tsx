@@ -8,7 +8,6 @@ interface TimeDurationProps {
 }
 
 export default function TimeDuration({ player }: TimeDurationProps) {
-  const isMounted = useRef(false);
   const [seek, setSeek] = useState<number>(0);
 
   const trackInterval = setInterval(() => {
@@ -17,10 +16,8 @@ export default function TimeDuration({ player }: TimeDurationProps) {
 
   // Remove the interval when the component unmounts.
   useEffect(() => {
-    isMounted.current = true;
     return () => {
       clearInterval(trackInterval);
-      isMounted.current = false;
     };
   });
 
