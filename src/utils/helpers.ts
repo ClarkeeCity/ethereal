@@ -2,7 +2,8 @@
 // Small function to convert seconds into a readable time foramt.
 // eslint-disable-next-line import/prefer-default-export
 export function durationToTime(duration: number | undefined): string {
-  if (duration === undefined) return '0:00';
+  if (duration === undefined) return '00:00';
+  if (duration < 0) return '00:00';
   duration = Math.floor(duration);
   const m = Math.floor(duration / 60);
   const s = duration % 60;

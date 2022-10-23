@@ -1,7 +1,8 @@
 @import '../main.scss';
 
 .inline-stars {
-  font-size: calc($mediabutton-size / 1.3);
+  font-size: calc($mediabutton-size / 1.5);
   display: flex;
+  align-self: start;
   margin: 0 -3px;
 }

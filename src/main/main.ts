@@ -91,8 +91,8 @@ const createWindow = async () => {
     title: 'Ethereal',
     icon: getAssetPath('icon.png'),
     show: false,
-    minWidth: 640,
-    minHeight: 480,
+    minWidth: 1024,
+    minHeight: 768,
     webPreferences: {
       preload: app.isPackaged
         ? path.join(__dirname, 'preload.js')

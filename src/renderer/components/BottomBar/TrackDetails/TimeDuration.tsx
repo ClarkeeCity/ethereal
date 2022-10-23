@@ -23,6 +23,7 @@ export default function TimeDuration({ player }: TimeDurationProps) {
       isMounted.current = false;
     };
   });
+
   let trackDuration = player.playingTrack?.dataset.duration;
   if (!trackDuration) trackDuration = '0';
   return (

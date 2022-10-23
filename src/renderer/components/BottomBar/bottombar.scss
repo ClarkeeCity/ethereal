@@ -1,15 +1,16 @@
 @import "../main.scss";
+$bottombar-padding: 5px;
 
 #bottombar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: $bottombar-size - 20px;
+  height: $bottombar-size - $bottombar-padding*2;
   width: 100%;
   background-color: $main-dark;
   bottom: 0;
   position: fixed;
-  padding: 10px 0 ;
+  padding: $bottombar-padding 0 ;
 
   .sidebar-width {
     width: $sidebar-width;
@@ -57,7 +58,7 @@
 }
 
 #track-title {
-  /* white-space: nowrap; */
+
 }
 
 #track-album {

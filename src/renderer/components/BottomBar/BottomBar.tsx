@@ -9,6 +9,7 @@ import TrackSlider from './TrackDetails/TrackSlider';
 import Volume from './Volume/Volume';
 import './bottombar.scss';
 import TimeDuration from './TrackDetails/TimeDuration';
+import TrackTitle from './TrackDetails/TrackTitle';
 
 interface BottomBarProps {
   toggle: boolean;
@@ -21,14 +22,6 @@ export default function BottomBar({
   setToggle,
   player,
 }: BottomBarProps) {
-  const [trackTitle, setTrackTitle] = useState<string>();
-
-  useEffect(() => {
-    setTrackTitle(
-      `${player.playingTrack?.dataset.artist} - ${player.playingTrack?.dataset.title}`
-    );
-  }, [player.playingTrack]);
-
   return (
     <div id="bottombar">
       <div className="sidebar-width">
@@ -43,9 +36,7 @@ export default function BottomBar({
       <div id="middle">
         <Volume player={player} />
         <TrackDetails>
-          <div id="track-title">
-            <b>{trackTitle}</b>
-          </div>
+          <TrackTitle player={player} />
           <div id="track-additional">
             <FiveStar />
             <TimeDuration player={player} />
